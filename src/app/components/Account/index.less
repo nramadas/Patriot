@@ -1,0 +1,28 @@
+@import '~lib/colors.less';
+@import '~lib/sizing.less';
+
+.Account {
+  line-height: 50px;
+  width: 100%;
+  box-sizing: border-box;
+
+  &__title {
+    float: left;
+    font-size: 24px;
+    color: @yellow;
+    font-weight: 800;
+    font-family: 'Gentium Book Basic';
+  }
+
+  &__icon {
+    float: right;
+    font-size: 24px !important;
+    line-height: 50px !important;
+    color: @slate;
+    cursor: pointer;
+
+    &:hover {
+      color: @yellow;
+    }
+  }
+}

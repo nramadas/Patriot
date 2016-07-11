@@ -1,0 +1,47 @@
+@import '~lib/colors.less';
+@import '~lib/sizing.less';
+
+.SideBar {
+  @account-height: 50px;
+  position: relative;
+  height: 100%;
+  padding: @account-height + 1 0;
+  box-sizing: border-box;
+
+  &__menuTab {
+    position: absolute;
+    top: 0;
+    left: 100%;
+    height: @account-height;
+    width: @account-height;
+    line-height: @account-height !important;
+    font-size: @text-size-4 !important;
+    color: @blue;
+    text-align: center;
+    background-color: @black;
+    cursor: pointer;
+    display: block !important;
+
+    @media(min-width: @min-full-width) {
+      display: none !important;
+    }
+  }
+
+  &__account {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: @account-height;
+    padding: 0 @gutter;
+    border-bottom: 1px solid @slate;
+  }
+
+  &__search {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: @account-height;
+  }
+}

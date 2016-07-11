@@ -1,0 +1,23 @@
+@import '~lib/colors.less';
+@import '~lib/sizing.less';
+
+.Authentication {
+  @forms-width: 400px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: @slate;
+
+  &__forms {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    max-width: @forms-width;
+    background-color: @black;
+    border-right: 2px solid @yellow;
+  }
+}

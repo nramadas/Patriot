@@ -1,0 +1,34 @@
+@import '~lib/colors.less';
+@import '~lib/sizing.less';
+
+.Contact {
+  position: relative;
+  padding: 5px (24px + @gutter) 5px @gutter;
+  font-size: @text-size-2;
+  line-height: 1.5;
+  color: @slate;
+  font-family: 'Open Sans';
+  font-weight: 800;
+  cursor: pointer;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+
+  &.m-isSelected {
+    background-color: @blue;
+  }
+
+  &.m-isOnline {
+    color: @grey;
+  }
+
+  &.m-hasNewMessage {
+    color: @yellow;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 10px;
+    right: @gutter;
+  }
+}

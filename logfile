@@ -1,0 +1,40 @@
+LOG:  database system was shut down at 2016-04-11 19:14:05 PDT
+LOG:  MultiXact member wraparound protections are now enabled
+LOG:  database system is ready to accept connections
+LOG:  autovacuum launcher started
+ERROR:  relation "user_contacts" does not exist at character 61
+STATEMENT:  SELECT "createdAt", "updatedAt", "userId", "ContactId" FROM "user_contacts" AS "user_contacts" WHERE "user_contacts"."userId" = 1 AND "user_contacts"."ContactId" IN (2);
+ERROR:  relation "user_contacts" does not exist at character 61
+STATEMENT:  SELECT "createdAt", "updatedAt", "userId", "ContactId" FROM "user_contacts" AS "user_contacts" WHERE "user_contacts"."userId" = 1 AND "user_contacts"."ContactId" IN (2);
+ERROR:  relation "user_contacts" does not exist at character 61
+STATEMENT:  SELECT "createdAt", "updatedAt", "userId", "ContactId" FROM "user_contacts" AS "user_contacts" WHERE "user_contacts"."userId" = 1 AND "user_contacts"."ContactId" IN (2);
+ERROR:  relation "user" does not exist
+STATEMENT:  CREATE TABLE IF NOT EXISTS "contacts" ("createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, "userId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, "ContactId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, PRIMARY KEY ("userId","ContactId"));
+ERROR:  relation "user" does not exist
+STATEMENT:  CREATE TABLE IF NOT EXISTS "contactRequests" ("createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, "userId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, "ContactRequestId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, PRIMARY KEY ("userId","ContactRequestId"));
+ERROR:  relation "user" does not exist
+STATEMENT:  CREATE TABLE IF NOT EXISTS "contacts" ("createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, "userId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, "ContactId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, PRIMARY KEY ("userId","ContactId"));
+ERROR:  relation "user" does not exist
+STATEMENT:  CREATE TABLE IF NOT EXISTS "contactRequests" ("createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, "userId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, "ContactRequestId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, PRIMARY KEY ("userId","ContactRequestId"));
+ERROR:  relation "user" does not exist
+STATEMENT:  CREATE TABLE IF NOT EXISTS "contacts" ("createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, "userId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, "ContactId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, PRIMARY KEY ("userId","ContactId"));
+ERROR:  relation "user" does not exist
+STATEMENT:  CREATE TABLE IF NOT EXISTS "contactRequests" ("createdAt" TIMESTAMP WITH TIME ZONE NOT NULL, "updatedAt" TIMESTAMP WITH TIME ZONE NOT NULL, "userId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, "ContactRequestId" INTEGER  REFERENCES "user" ("id") ON DELETE CASCADE ON UPDATE CASCADE, PRIMARY KEY ("userId","ContactRequestId"));
+ERROR:  operator does not exist: character varying @> unknown at character 115
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT "id", "username", "passwordDigest", "createdAt", "updatedAt" FROM "user" AS "user" WHERE "user"."username" @> '';
+ERROR:  operator does not exist: character varying @> unknown at character 115
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT "id", "username", "passwordDigest", "createdAt", "updatedAt" FROM "user" AS "user" WHERE "user"."username" @> 'a';
+ERROR:  operator does not exist: character varying @> unknown at character 115
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT "id", "username", "passwordDigest", "createdAt", "updatedAt" FROM "user" AS "user" WHERE "user"."username" @> 'al';
+ERROR:  operator does not exist: character varying @> unknown at character 115
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT "id", "username", "passwordDigest", "createdAt", "updatedAt" FROM "user" AS "user" WHERE "user"."username" @> 'ali';
+ERROR:  operator does not exist: character varying @> unknown at character 115
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT "id", "username", "passwordDigest", "createdAt", "updatedAt" FROM "user" AS "user" WHERE "user"."username" @> 'alic';
+ERROR:  operator does not exist: character varying @> unknown at character 115
+HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
+STATEMENT:  SELECT "id", "username", "passwordDigest", "createdAt", "updatedAt" FROM "user" AS "user" WHERE "user"."username" @> 'alice';
