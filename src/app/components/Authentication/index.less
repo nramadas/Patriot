@@ -2,7 +2,7 @@
 @import '~lib/sizing.less';
 
 .Authentication {
-  @forms-width: 400px;
+  @forms-width: 300px;
   position: absolute;
   top: 0;
   bottom: 0;
@@ -10,14 +10,108 @@
   right: 0;
   background-color: @slate;
 
-  &__forms {
+  &__left {
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     width: 100%;
-    max-width: @forms-width;
+    padding: @gutter;
     background-color: @black;
-    border-right: 2px solid @yellow;
+    box-sizing: border-box;
+
+    @media(min-width: @min-full-width) {
+      max-width: @forms-width;
+    }
+  }
+
+  &__right {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: @forms-width;
+    box-sizing: border-box;
+    border-left: 2px solid @blue;
+    overflow: hidden;
+    display: none;
+
+    @media(min-width: @min-full-width) {
+      display: block;
+    }
+  }
+
+  &__title {
+    padding-left: 10px;
+    margin-bottom: @gutter;
+    font-size: @text-size-5;
+    line-height: 1.5;
+    color: @yellow;
+    font-family: 'Gentium Book Basic';
+    font-weight: 800;
+  }
+
+  &__why {
+    padding: @gutter;
+    font-size: @text-size-4;
+    line-height: 1.5;
+    color: @yellow;
+    font-family: 'Open Sans';
+  }
+
+  &__perk {
+    padding: @gutter;
+    max-width: 600px;
+  }
+
+  &__perkTitle {
+    font-size: @text-size-3;
+    line-height: 1.5;
+    color: @blue;
+    font-family: 'Open Sans';
+    font-weight: 800;
+  }
+
+  &__perkExplanation {
+    font-size: @text-size-2;
+    line-height: 1.5;
+    color: @grey;
+    font-family: 'Open Sans';
+  }
+
+  &__switchForm {
+    font-size: @text-size-1;
+    line-height: 1.5;
+    color: @grey;
+    cursor: pointer;
+  }
+
+  &__input,
+  &__button {
+    display: block;
+    margin-bottom: @gutter;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: @text-size-4;
+    line-height: 1.5;
+    font-family: 'Open Sans';
+    font-weight: 400;
+    box-sizing: border-box;
+  }
+
+  &__input {
+    border: none;
+    outline: none;
+    color: @blue;
+    background-color: rgba(255,255,255,0.05);
+  }
+
+  &__button {
+    color: @grey;
+    text-align: center;
+    // background-color: rgba(255,255,255,0.07);
+    background-color: @blue;
+    cursor: pointer;
   }
 }
