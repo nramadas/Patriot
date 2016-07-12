@@ -32,4 +32,4 @@ const selector = createSelector(
   userIsAuthenticated => ({ userIsAuthenticated })
 );
 
-export default connect()(App);
+export default connect(selector)(App);

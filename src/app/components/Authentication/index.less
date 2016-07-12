@@ -52,7 +52,7 @@
   }
 
   &__why {
-    padding: @gutter;
+    padding: 23px @gutter 0;
     font-size: @text-size-4;
     line-height: 1.5;
     color: @yellow;
@@ -103,14 +103,25 @@
   &__input {
     border: none;
     outline: none;
-    color: @blue;
+    color: @grey;
     background-color: rgba(255,255,255,0.05);
+
+    &.m-error {
+      background-color: rgba(255,33,24,0.5);
+    }
+  }
+
+  &__errors {
+    margin-bottom: @gutter;
+    line-height: 1.5;
+    color: rgba(255,33,24,0.5);
+    font-size: @text-size-3;
+    font-family: 'Open Sans';
   }
 
   &__button {
     color: @grey;
     text-align: center;
-    // background-color: rgba(255,255,255,0.07);
     background-color: @blue;
     cursor: pointer;
   }

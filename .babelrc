@@ -12,18 +12,28 @@
       "presets": [
         "es2015-native-modules",
         "react-hmre"
-      ]
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-runtime"
+      ],
     },
     "server": {
       "presets": [
         "es2015"
-      ]
+      ],
+      "plugins": [
+        "transform-class-properties",
+        "transform-runtime"
+      ],
     },
     "production": {
       "presets": [
         "es2015"
       ],
       "plugins": [
+        "transform-class-properties",
+        "transform-runtime",
         "transform-react-constant-elements",
         "transform-react-inline-elements"
       ]

@@ -38,3 +38,15 @@ STATEMENT:  SELECT "id", "username", "passwordDigest", "createdAt", "updatedAt" 
 ERROR:  operator does not exist: character varying @> unknown at character 115
 HINT:  No operator matches the given name and argument type(s). You might need to add explicit type casts.
 STATEMENT:  SELECT "id", "username", "passwordDigest", "createdAt", "updatedAt" FROM "user" AS "user" WHERE "user"."username" @> 'alice';
+ERROR:  duplicate key value violates unique constraint "user_username"
+DETAIL:  Key (username)=(nramadas) already exists.
+STATEMENT:  INSERT INTO "user" ("id","username","passwordDigest","createdAt","updatedAt") VALUES (DEFAULT,'nramadas','$2a$10$nQfbqZr6WT8tbFTefllBuus2ZNDXXLD/tV6PrSTNrE9RdsAw19XdO','2016-07-12 19:30:56.216 +00:00','2016-07-12 19:30:56.216 +00:00') RETURNING *;
+ERROR:  duplicate key value violates unique constraint "user_username"
+DETAIL:  Key (username)=(nramadas) already exists.
+STATEMENT:  INSERT INTO "user" ("id","username","passwordDigest","createdAt","updatedAt") VALUES (DEFAULT,'nramadas','$2a$10$nqgMS7QBFHudVZOmDL6.nOJ5hfLeFCjwkmPttWAP.E.QnyEedPPUe','2016-07-12 19:44:22.926 +00:00','2016-07-12 19:44:22.926 +00:00') RETURNING *;
+ERROR:  duplicate key value violates unique constraint "user_username"
+DETAIL:  Key (username)=(nramadas) already exists.
+STATEMENT:  INSERT INTO "user" ("id","username","passwordDigest","createdAt","updatedAt") VALUES (DEFAULT,'nramadas','$2a$10$YxWGdbKpSAG66yCNc10JvemYpPMsdhRNSTviOFWudpibZJ8cLmzUW','2016-07-12 20:36:32.581 +00:00','2016-07-12 20:36:32.581 +00:00') RETURNING *;
+ERROR:  duplicate key value violates unique constraint "user_username"
+DETAIL:  Key (username)=(nramadas) already exists.
+STATEMENT:  INSERT INTO "user" ("id","username","passwordDigest","createdAt","updatedAt") VALUES (DEFAULT,'nramadas','$2a$10$bKusSUqzgNLmZJzny6/NX.v/9PcYbBLwTDfDi317iD13hL1dwREmO','2016-07-12 21:26:28.600 +00:00','2016-07-12 21:26:28.600 +00:00') RETURNING *;

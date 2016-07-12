@@ -1,4 +1,4 @@
-import Sequelize from 'sequelize';
+import Sequelize, { ValidationError, ValidationErrorItem } from 'sequelize';
 import bcrypt from 'bcrypt';
 
 export default function(sql, Contact, ContactRequest) {
@@ -7,8 +7,10 @@ export default function(sql, Contact, ContactRequest) {
       type: Sequelize.STRING,
       allowNull: false,
       validate: {
-        notEmpty: true,
-        len: [1, 50],
+        len: {
+          args: [7, 50],
+          msg: 'username must be between 8 and 50 characters'
+        },
       },
     },
     passwordDigest: {
@@ -21,7 +23,10 @@ export default function(sql, Contact, ContactRequest) {
       type: Sequelize.VIRTUAL,
       allowNull: false,
       validate: {
-        notEmpty: true,
+        len: {
+          args: [7, 100],
+          msg: 'passwords must be between 8 and 100 characters',
+        },
       },
     },
     passwordConfirmation: {
@@ -31,39 +36,29 @@ export default function(sql, Contact, ContactRequest) {
     freezeTableName: true,
     indexes: [{ unique: true, fields: ['username'] }],
     instanceMethods: {
-      authenticate: function(value) {
-        if (bcrypt.compareSync(value, this.passwordDigest))
-          return this;
-        else
-          return false;
-      }
-    }
+      authenticate(value) {
+        return bcrypt.compareSync(value, this.passwordDigest)
+      },
+    },
   });
 
-  var hasSecurePassword = function(user, options, callback) {
+  User.beforeCreate((user, options, callback) => {
     if (user.password != user.passwordConfirmation) {
-      throw new Error("Password confirmation doesn't match Password");
+      throw new ValidationError('passwords do not match', [
+        new ValidationErrorItem(
+          'passwords do not match',
+          '',
+          'passwordConfirmation',
+          user.passwordConfirmation
+        ),
+      ]);
     }
 
-    bcrypt.hash(user.get('password'), 10, function(err, hash) {
+    bcrypt.hash(user.get('password'), 10, (err, hash) => {
       if (err) return callback(err);
       user.set('passwordDigest', hash);
       return callback(null, options);
     });
-  };
-
-  User.beforeCreate(function(user, options, callback) {
-    if (user.password)
-      hasSecurePassword(user, options, callback);
-    else
-      return callback(null, options);
-  });
-
-  User.beforeUpdate(function(user, options, callback) {
-    if (user.password)
-      hasSecurePassword(user, options, callback);
-    else
-      return callback(null, options);
   });
 
   User.belongsToMany(User, { through: Contact, as: 'Contact' });

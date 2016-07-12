@@ -4,10 +4,10 @@ import KoaBodyParser from 'koa-bodyparser';
 import KoaStatic from 'koa-static';
 import Sequelize from 'sequelize';
 
-import template from './templates/main';
 import createUserModel from './models/User';
 import createContactModel from './models/Contact';
 import createContactRequest from './models/ContactRequest';
+import setupHandlers from './handlers';
 
 const PORT = 8888;
 const server = new Koa();
@@ -35,6 +35,8 @@ const sql = new Sequelize('patriot', 'niranjan', '', {
     await User.sync();
     await Contact.sync();
     await ContactRequest.sync();
+
+    setupHandlers(router, { User, Contact, ContactRequest });
 
     // const a = await User.create({
     //   username: 'Alice',
@@ -71,21 +73,6 @@ const sql = new Sequelize('patriot', 'niranjan', '', {
     //   password: 'foo',
     //   passwordConfirmation: 'foo',
     // });
-
-    router.get('/', async ctx => {
-      ctx.body = template();
-    });
-
-    router.get('/searchUsers', async ctx => {
-      const username = ctx.request.query.q;
-      const users = await User.findAll({
-        where: { username: { $ilike: `%${username}%`} },
-      });
-
-      ctx.body = {
-        users: users.map(({ id, username }) => ({ id, username })),
-      };
-    });
 
     server.use(bodyparser);
     server.use(router.routes());
