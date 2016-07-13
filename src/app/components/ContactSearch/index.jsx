@@ -19,7 +19,7 @@ export function ContactSearch(props) {
 }
 
 const dispatcher = dispatch => ({
-  onSearch: val => dispatch(searchActions.searchContacts(val)),
+  onSearch: val => dispatch(searchActions.resultsPending(val)),
 });
 
 export default connect(null, dispatcher)(ContactSearch);

@@ -3,7 +3,7 @@ import { DEBOUNCE } from 'app/helpers/actionObserver';
 import * as searchActions from 'app/actions/search';
 
 export default {
-  actionType: searchActions.FETCH_RESULTS,
+  actionType: searchActions.RESULTS_PENDING,
   observer: DEBOUNCE(200),
   run: action => async (dispatch, getState) => {
     const { username } = action.payload;

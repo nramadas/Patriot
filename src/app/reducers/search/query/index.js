@@ -4,7 +4,7 @@ const DEFAULT = '';
 
 export default function query(state=DEFAULT, action={}) {
   switch(action.type) {
-    case searchActions.QUERY: return action.payload.query;
+    case searchActions.RESULTS_PENDING: return action.payload.username;
     default: return state;
   }
 }

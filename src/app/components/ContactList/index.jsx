@@ -78,14 +78,15 @@ const renderSearchResults = results => (
 );
 
 const selector = createSelector(
+  state => state.user.id,
   state => state.contacts.names,
   state => state.search.query,
   state => state.search.results.pending,
   state => state.search.results.results,
-  (contacts, query, searchPending, searchResults) => ({
+  (userId, contacts, query, searchPending, searchResults) => ({
     searchPending,
     searchResults: searchResults
-      .filter(({ id }) => !contacts[id])
+      .filter(({ id }) => !(contacts[id] || id === userId))
       .sort((a, b) => {
         const _a = a.username;
         const _b = b.username;
