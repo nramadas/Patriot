@@ -4,7 +4,14 @@ export default models => async ctx => {
   const { username, password } = ctx.request.body;
 
   try {
-    const user = await models.User.findOne({ where: { username } });
+    const user = await models.User.findOne({
+      where: { username },
+      include: [{
+        model: models.User,
+        as: 'contacts',
+      }],
+    });
+
     if (user && user.authenticate(password)) {
       returnUser(ctx, user);
     } else {

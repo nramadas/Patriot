@@ -38,11 +38,7 @@ const sql = new Sequelize('patriot', 'niranjan', '', {
 
     setupHandlers(router, { User, Contact, ContactRequest });
 
-    // const a = await User.create({
-    //   username: 'Alice',
-    //   password: 'foo',
-    //   passwordConfirmation: 'foo',
-    // });
+
     //
     // const b = await User.create({
     //   username: 'Bob',

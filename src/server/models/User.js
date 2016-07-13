@@ -61,8 +61,8 @@ export default function(sql, Contact, ContactRequest) {
     });
   });
 
-  User.belongsToMany(User, { through: Contact, as: 'Contact' });
-  User.belongsToMany(User, { through: ContactRequest, as: 'ContactRequest' });
+  User.belongsToMany(User, { through: Contact, as: 'contacts' });
+  User.belongsToMany(User, { through: ContactRequest, as: 'contactRequests' });
 
   return User;
 }

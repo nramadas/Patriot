@@ -6,13 +6,15 @@ import reduxThunk from 'redux-thunk';
 
 import App from 'app';
 import reducers from 'app/reducers';
+import observers from 'app/observers';
+import actionObserver from 'app/helpers/actionObserver';
 
 (() => {
   const data = {};
   const clientReducers = combineReducers(reducers);
 
   const store = createStore(clientReducers, data, compose(
-    applyMiddleware(reduxThunk),
+    applyMiddleware(actionObserver(observers), reduxThunk),
     window.devToolsExtension ? window.devToolsExtension() : f => f
   ));
 

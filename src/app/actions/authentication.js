@@ -9,9 +9,9 @@ export const setPending = () => ({
   type: PENDING,
 });
 
-export const setSuccess = (id, username) => ({
+export const setSuccess = (id, username, contacts) => ({
   type: SUCCESS,
-  payload: { id, username },
+  payload: { id, username, contacts },
 });
 
 export const setFailure = errors => ({
@@ -19,19 +19,19 @@ export const setFailure = errors => ({
   payload: { errors },
 });
 
-export const register = (name, password, passwordConfirmation) => async (dispatch, getState) => {
+export const register = (username, password, passwordConfirmation) => async (dispatch, getState) => {
   if (getState().user.pending) return;
 
   dispatch(setPending());
 
   try {
-    const { id, username } = await makeRequest('POST', '/register', {
-      username: name,
+    const { user, contacts } = await makeRequest('POST', '/register', {
+      username,
       password,
       passwordConfirmation,
     });
 
-    dispatch(setSuccess(id, username));
+    dispatch(setSuccess(user.id, user.username, contacts));
   } catch(e) {
     if (e instanceof ValidationError) {
       return dispatch(setFailure(e.errors));
@@ -41,18 +41,17 @@ export const register = (name, password, passwordConfirmation) => async (dispatc
   }
 };
 
-export const login = (name, password) => async (dispatch, getState) => {
+export const login = (username, password) => async (dispatch, getState) => {
   if (getState().user.pending) return;
 
   dispatch(setPending());
 
   try {
-    const { id, username } = await makeRequest('POST', '/login', {
-      username: name,
+    const { user, contacts } = await makeRequest('POST', '/login', {
+      username,
       password,
     });
-
-    dispatch(setSuccess(id, username));
+    dispatch(setSuccess(user.id, user.username, contacts));
   } catch(e) {
     if (e instanceof ValidationError) {
       return dispatch(setFailure(e.errors));

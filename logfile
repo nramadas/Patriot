@@ -50,3 +50,29 @@ STATEMENT:  INSERT INTO "user" ("id","username","passwordDigest","createdAt","up
 ERROR:  duplicate key value violates unique constraint "user_username"
 DETAIL:  Key (username)=(nramadas) already exists.
 STATEMENT:  INSERT INTO "user" ("id","username","passwordDigest","createdAt","updatedAt") VALUES (DEFAULT,'nramadas','$2a$10$bKusSUqzgNLmZJzny6/NX.v/9PcYbBLwTDfDi317iD13hL1dwREmO','2016-07-12 21:26:28.600 +00:00','2016-07-12 21:26:28.600 +00:00') RETURNING *;
+ERROR:  column contacts.contact.contactId does not exist at character 791
+HINT:  Perhaps you meant to reference the column "contacts.contact.ContactId".
+STATEMENT:  SELECT "user".*, "contacts"."id" AS "contacts.id", "contacts"."username" AS "contacts.username", "contacts"."passwordDigest" AS "contacts.passwordDigest", "contacts"."createdAt" AS "contacts.createdAt", "contacts"."updatedAt" AS "contacts.updatedAt", "contacts.contact"."createdAt" AS "contacts.contact.createdAt", "contacts.contact"."updatedAt" AS "contacts.contact.updatedAt", "contacts.contact"."userId" AS "contacts.contact.userId", "contacts.contact"."contactId" AS "contacts.contact.contactId" FROM (SELECT "user"."id", "user"."username", "user"."passwordDigest", "user"."createdAt", "user"."updatedAt" FROM "user" AS "user" WHERE "user"."username" = 'nramadas' LIMIT 1) AS "user" LEFT OUTER JOIN ("contacts" AS "contacts.contact" INNER JOIN "user" AS "contacts" ON "contacts"."id" = "contacts.contact"."contactId") ON "user"."id" = "contacts.contact"."userId";
+ERROR:  column contacts.contact.contactId does not exist at character 791
+HINT:  Perhaps you meant to reference the column "contacts.contact.ContactId".
+STATEMENT:  SELECT "user".*, "contacts"."id" AS "contacts.id", "contacts"."username" AS "contacts.username", "contacts"."passwordDigest" AS "contacts.passwordDigest", "contacts"."createdAt" AS "contacts.createdAt", "contacts"."updatedAt" AS "contacts.updatedAt", "contacts.contact"."createdAt" AS "contacts.contact.createdAt", "contacts.contact"."updatedAt" AS "contacts.contact.updatedAt", "contacts.contact"."userId" AS "contacts.contact.userId", "contacts.contact"."contactId" AS "contacts.contact.contactId" FROM (SELECT "user"."id", "user"."username", "user"."passwordDigest", "user"."createdAt", "user"."updatedAt" FROM "user" AS "user" WHERE "user"."username" = 'nramadas' LIMIT 1) AS "user" LEFT OUTER JOIN ("contacts" AS "contacts.contact" INNER JOIN "user" AS "contacts" ON "contacts"."id" = "contacts.contact"."contactId") ON "user"."id" = "contacts.contact"."userId";
+ERROR:  column contacts.contact.contactId does not exist at character 791
+HINT:  Perhaps you meant to reference the column "contacts.contact.ContactId".
+STATEMENT:  SELECT "user".*, "contacts"."id" AS "contacts.id", "contacts"."username" AS "contacts.username", "contacts"."passwordDigest" AS "contacts.passwordDigest", "contacts"."createdAt" AS "contacts.createdAt", "contacts"."updatedAt" AS "contacts.updatedAt", "contacts.contact"."createdAt" AS "contacts.contact.createdAt", "contacts.contact"."updatedAt" AS "contacts.contact.updatedAt", "contacts.contact"."userId" AS "contacts.contact.userId", "contacts.contact"."contactId" AS "contacts.contact.contactId" FROM (SELECT "user"."id", "user"."username", "user"."passwordDigest", "user"."createdAt", "user"."updatedAt" FROM "user" AS "user" WHERE "user"."username" = 'nramadas' LIMIT 1) AS "user" LEFT OUTER JOIN ("contacts" AS "contacts.contact" INNER JOIN "user" AS "contacts" ON "contacts"."id" = "contacts.contact"."contactId") ON "user"."id" = "contacts.contact"."userId";
+ERROR:  column contacts.contact.contactId does not exist at character 791
+HINT:  Perhaps you meant to reference the column "contacts.contact.ContactId".
+STATEMENT:  SELECT "user".*, "contacts"."id" AS "contacts.id", "contacts"."username" AS "contacts.username", "contacts"."passwordDigest" AS "contacts.passwordDigest", "contacts"."createdAt" AS "contacts.createdAt", "contacts"."updatedAt" AS "contacts.updatedAt", "contacts.contact"."createdAt" AS "contacts.contact.createdAt", "contacts.contact"."updatedAt" AS "contacts.contact.updatedAt", "contacts.contact"."userId" AS "contacts.contact.userId", "contacts.contact"."contactId" AS "contacts.contact.contactId" FROM (SELECT "user"."id", "user"."username", "user"."passwordDigest", "user"."createdAt", "user"."updatedAt" FROM "user" AS "user" WHERE "user"."username" = 'nramadas' LIMIT 1) AS "user" LEFT OUTER JOIN ("contacts" AS "contacts.contact" INNER JOIN "user" AS "contacts" ON "contacts"."id" = "contacts.contact"."contactId") ON "user"."id" = "contacts.contact"."userId";
+ERROR:  syntax error at or near "SELECT" at character 20
+STATEMENT:  SELECT * from user
+	SELECT * FROM user WHERE username == nramadas
+	;
+ERROR:  column "username" does not exist at character 26
+STATEMENT:  SELECT * FROM user WHERE username == 'nramadas';
+ERROR:  column "id" does not exist at character 26
+STATEMENT:  SELECT * FROM user WHERE id == 1;
+ERROR:  column "nramadas" does not exist at character 42
+STATEMENT:  SELECT * FROM "user" WHERE "username" == "nramadas";
+ERROR:  syntax error at or near ""nramadas"" at character 42
+STATEMENT:  SELECT * FROM "user" WHERE "username" IS "nramadas";
+ERROR:  column "nramadas" does not exist at character 41
+STATEMENT:  SELECT * FROM "user" WHERE "username" = "nramadas";

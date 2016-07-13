@@ -31,6 +31,7 @@ export default function authentication(state=DEFAULT, action={}) {
       const { errors } = action.payload;
       return {
         ...state,
+        loggedIn: false,
         pending: false,
         validationErrors: errors,
       };

@@ -11,12 +11,20 @@ export const returnNoUser = ctx => {
 
 export const returnServerError = ctx => {
   ctx.status = 500;
-  ctx.body = {};
+  ctx.body = {
+    errors: [{ field: '', msg: 'Something wen\'t wrong' }],
+  };
 };
 
 export const returnUser = (ctx, user) => {
   ctx.body = {
-    id: user.id,
-    username: user.username,
+    user: {
+      id: user.id,
+      username: user.username,
+    },
+    contacts: (user.contacts || []).map(c => ({
+      id: c.id,
+      username: c.username,
+    })),
   };
 };

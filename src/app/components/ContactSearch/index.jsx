@@ -12,6 +12,7 @@ export function ContactSearch(props) {
     <input
       className='ContactSearch'
       placeholder='Search'
+      autoComplete='off'
       onChange={ e => props.onSearch(e.target.value) }
     />
   );
